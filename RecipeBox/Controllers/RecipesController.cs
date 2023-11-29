@@ -43,7 +43,10 @@ namespace RecipeBox.Controllers
 
     public ActionResult Details(int id)
     {
-      Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.RecipeId == id);
+      Recipe thisRecipe = _db.Recipes
+      .Include(recipe => recipe.JoinEntities)
+      .ThenInclude(recipe => recipe.Tag)
+      .FirstOrDefault(recipe => recipe.RecipeId == id);
       return View(thisRecipe);
     }
 
@@ -52,6 +55,20 @@ namespace RecipeBox.Controllers
       Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipes => recipes.RecipeId == id);
       ViewBag.TagId = new SelectList(_db.Tags, "TagId", "Category");
       return View(thisRecipe);
+    }
+
+    [HttpPost]
+    public ActionResult AddTag(Recipe recipe, int tagId)
+    {
+      #nullable enable
+      RecipeTag? joinEntity = _db.RecipeTags.FirstOrDefault(join => join.RecipeTagId == tagId && join.RecipeId == recipe.RecipeId);
+      #nullable disable
+      if (joinEntity == null && tagId != 0)
+      {
+        _db.RecipeTags.Add(new RecipeTag() { TagId = tagId, RecipeId = recipe.RecipeId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { id = recipe.RecipeId });
     }
 
   }
