@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBox.Models.Tag
+
+<h4>Create a new tag</h4>
+
+<p>@Html.ValidationMessageFor(model => model.RecipeId, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Category)
+  @Html.TextBoxFor(model => model.Category)
+  <br>
+  <br>
+  @Html.LabelFor(model => model.Recipe)
+  @Html.DropDownList("RecipeId")
+  <br>
+  <br>
+  <input type="submit" value="Create new tag" class="btn btn-primary"/>
+}
+<br>
+<p>@Html.ActionLink("Show all tags", "Index")</p>

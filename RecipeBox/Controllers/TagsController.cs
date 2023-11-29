@@ -22,7 +22,24 @@ namespace RecipeBox.Controllers
 
     public ActionResult Create()
     {
+      ViewBag.RecipeId = new SelectList(_db.Recipes, "RecipeId", "Name");
       return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Tag tag)
+    {
+      if (!ModelState.IsValid)
+      {
+        ViewBag.RecipeId = new SelectList(_db.Recipes, "RecipeId", "Name");
+        return View(tag);
+      }
+      else
+      {
+        _db.Tags.Add(tag);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+      }
     }
 
   }
