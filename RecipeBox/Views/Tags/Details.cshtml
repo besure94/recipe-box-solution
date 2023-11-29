@@ -10,4 +10,5 @@
 <hr>
 <h3>@Html.DisplayNameFor(model => model.Category): @Html.DisplayFor(model => model.Category)</h3>
 
+<p>@Html.ActionLink("Add a recipe to this tag", "AddRecipe", new { id = Model.TagId })</p>
 <p>@Html.ActionLink("Back to recipe list", "Index")</p>
