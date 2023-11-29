@@ -10,5 +10,20 @@
 <hr>
 <h3>@Html.DisplayNameFor(model => model.Category): @Html.DisplayFor(model => model.Category)</h3>
 
+@if (@Model.JoinEntities.Count == 0)
+{
+  <h4>This tag does not belong to any recipes.</h4>
+}
+else
+{
+  <h4>The following recipes belong to this tag:</h4>
+  <ul>
+    @foreach (RecipeTag join in Model.JoinEntities)
+    {
+      <li>@join.Recipe.Name</li>
+    }
+  </ul>
+}
+
 <p>@Html.ActionLink("Add a recipe to this tag", "AddRecipe", new { id = Model.TagId })</p>
 <p>@Html.ActionLink("Back to recipe list", "Index")</p>
