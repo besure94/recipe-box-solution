@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBox.Models.Recipe
+@using RecipeBox.Models
+@using System.Collections.Generic;
+
+<h2>Recipe Details</h2>
+<hr>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.Ingredients): @Html.DisplayFor(model => model.Ingredients)</h3>
+<h3>@Html.DisplayNameFor(model => model.Instructions): @Html.DisplayFor(model => model.Instructions)</h3>
+
+<p>@Html.ActionLink("Back to recipe list", "Index")</p>
