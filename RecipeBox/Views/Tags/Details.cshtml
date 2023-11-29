@@ -1,0 +1,13 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBox.Models.Tag
+@using RecipeBox.Models
+@using System.Collections.Generic;
+
+<h2>Tag Details</h2>
+<hr>
+<h3>@Html.DisplayNameFor(model => model.Category): @Html.DisplayFor(model => model.Category)</h3>
+
+<p>@Html.ActionLink("Back to recipe list", "Index")</p>

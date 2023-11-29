@@ -42,5 +42,11 @@ namespace RecipeBox.Controllers
       }
     }
 
+    public ActionResult Details(int id)
+    {
+      Tag thisTag = _db.Tags.FirstOrDefault(tag => tag.TagId == id);
+      return View(thisTag);
+    }
+
   }
 }
