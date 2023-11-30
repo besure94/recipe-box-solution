@@ -98,5 +98,14 @@ namespace RecipeBox.Controllers
       return View(thisRecipe);
     }
 
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.RecipeId == id);
+      _db.Recipes.Remove(thisRecipe);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
   }
 }
