@@ -7,11 +7,16 @@
 
 <h4>Rate this recipe: @Html.DisplayFor(model => model.Name)</h4>
 
+<p>@Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.RecipeId)
+  @Html.HiddenFor(model => model.Name)
+  @Html.HiddenFor(model => model.Ingredients)
+  @Html.HiddenFor(model => model.Instructions)
   @Html.LabelFor(model => model.Rating)
-  @Html.TextBoxFor(model => model.Rating)
+  @Html.EditorFor(model => model.Rating)
   <input type="submit" class="btn btn-primary" value="Rate"/>
 }
 <br>

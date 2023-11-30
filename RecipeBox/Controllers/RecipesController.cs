@@ -122,5 +122,20 @@ namespace RecipeBox.Controllers
       return View(thisRecipe);
     }
 
+    [HttpPost]
+    public ActionResult RateRecipe(Recipe recipe)
+    {
+      if (!ModelState.IsValid)
+      {
+        return View(recipe);
+      }
+      else
+      {
+        _db.Recipes.Update(recipe);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
+    }
+
   }
 }
