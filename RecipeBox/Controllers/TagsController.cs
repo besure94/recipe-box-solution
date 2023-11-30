@@ -76,5 +76,20 @@ namespace RecipeBox.Controllers
       return View(thisTag);
     }
 
+    [HttpPost]
+    public ActionResult Edit(Tag tag)
+    {
+      if (!ModelState.IsValid)
+      {
+        return View(tag);
+      }
+      else
+      {
+        _db.Tags.Update(tag);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
+    }
+
   }
 }
