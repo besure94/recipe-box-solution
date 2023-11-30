@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBox.Models.Recipe
+@using RecipeBox.Models
+
+<h4>Rate this recipe: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.RecipeId)
+  @Html.LabelFor(model => model.Rating)
+  @Html.TextBoxFor(model => model.Rating)
+  <input type="submit" class="btn btn-primary" value="Rate"/>
+}
+<br>
+<p>@Html.ActionLink("Back to recipe list", "Index")</p>
