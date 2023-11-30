@@ -23,6 +23,19 @@
   }
 </ul>
 
+<h4>Tags</h4>
+@if (Model["tags"].Length == 0)
+{
+  <p>No tags have been added yet.</p>
+}
+
+<ul>
+  @foreach (Tag tag in Model["tags"])
+  {
+    <li>@Html.ActionLink(@tag.Category, "Details", "Tags", new { id = @tag.TagId })</li>
+  }
+</ul>
+
 <hr>
 
 <p>@Html.ActionLink("Manage recipes", "Index", "Recipes")</p>
