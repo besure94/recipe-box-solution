@@ -92,5 +92,11 @@ namespace RecipeBox.Controllers
       }
     }
 
+    public ActionResult Delete(int id)
+    {
+      Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.RecipeId == id);
+      return View(thisRecipe);
+    }
+
   }
 }
