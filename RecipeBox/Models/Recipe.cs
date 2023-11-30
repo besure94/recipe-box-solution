@@ -16,6 +16,7 @@ namespace RecipeBox.Models
 
     [Required(ErrorMessage = "The recipe must have instructions.")]
     public string Instructions { get; set; }
+    public string Rating { get; set; }
     public List<RecipeTag> JoinEntities { get; }
   }
 }
