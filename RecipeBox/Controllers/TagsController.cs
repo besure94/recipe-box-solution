@@ -91,5 +91,11 @@ namespace RecipeBox.Controllers
       }
     }
 
+    public ActionResult Delete(int id)
+    {
+      Tag thisTag = _db.Tags.FirstOrDefault(tag => tag.TagId == id);
+      return View(thisTag);
+    }
+
   }
 }
