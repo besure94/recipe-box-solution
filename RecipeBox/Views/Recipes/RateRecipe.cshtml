@@ -6,6 +6,7 @@
 @using RecipeBox.Models
 
 <h4>Rate this recipe: @Html.DisplayFor(model => model.Name)</h4>
+<h5>Rate this recipe from 1 to 10</h5>
 
 @using (Html.BeginForm())
 {
@@ -14,7 +15,7 @@
   @Html.HiddenFor(model => model.Ingredients)
   @Html.HiddenFor(model => model.Instructions)
   @Html.LabelFor(model => model.Rating)
-  @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @type="number", @min="0", @max="10", @defaultValue="0"}})
+  @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @type="number", @min="1", @max="10", @defaultValue="1"}})
   <input type="submit" class="btn btn-primary" value="Rate"/>
 }
 <br>
