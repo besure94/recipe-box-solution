@@ -16,10 +16,7 @@ namespace RecipeBox.Models
 
     [Required(ErrorMessage = "The recipe must have instructions.")]
     public string Instructions { get; set; }
-
-    [Required(ErrorMessage = "You must enter a rating.")]
-    [Range(1, 10, ErrorMessage = "Rating must be between 1 and 10.")]
-    public int? Rating { get; set; }
+    public int Rating { get; set; }
     public List<RecipeTag> JoinEntities { get; }
   }
 }

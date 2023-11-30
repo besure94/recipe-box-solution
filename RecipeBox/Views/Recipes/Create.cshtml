@@ -4,7 +4,7 @@
 
 @model RecipeBox.Models.Recipe
 
-<h4>Add a new recipe</h4>
+<h4>Create a new recipe</h4>
 
 <p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Ingredients, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
@@ -24,7 +24,7 @@
   @Html.TextBoxFor(model => model.Instructions)
   <br>
   <br>
-  <input type="submit" class="btn btn-primary" value="Add new recipe"/>
+  <input type="submit" class="btn btn-primary" value="Create new recipe"/>
 }
 <br>
 <p>@Html.ActionLink("Show all recipes", "Index")</p>
