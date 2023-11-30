@@ -7,6 +7,9 @@
 
 <h2>Add a recipe</h2>
 
+<p><strong>Note: you must have at least one recipe in order to add it to a tag.</strong></p>
+<p><strong>Go to @Html.ActionLink("this page", "Create", "Tags") to create a recipe.</strong></p>
+
 <h4>Add a recipe to this tag: @Html.DisplayFor(model => model.Category)</h4>
 
 @using (Html.BeginForm())
