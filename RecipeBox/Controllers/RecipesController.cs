@@ -137,5 +137,10 @@ namespace RecipeBox.Controllers
       }
     }
 
+    public ActionResult Search()
+    {
+      return View();
+    }
+
   }
 }
