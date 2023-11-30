@@ -71,5 +71,11 @@ namespace RecipeBox.Controllers
       return RedirectToAction("Details", new { id = recipe.RecipeId });
     }
 
+    public ActionResult Edit(int id)
+    {
+      Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipes => recipes.RecipeId == id);
+      return View(thisRecipe);
+    }
+
   }
 }
