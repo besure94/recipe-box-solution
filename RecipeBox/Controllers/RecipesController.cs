@@ -144,25 +144,5 @@ namespace RecipeBox.Controllers
       }
     }
 
-    [Authorize]
-    public ActionResult Search()
-    {
-      return View();
-    }
-
-    // [HttpPost]
-    // public ActionResult Search(Recipe searchedIngredient)
-    // {
-    //   Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.Ingredients == searchedIngredient.Ingredients);
-    //   if (thisRecipe == searchedIngredient)
-    //   {
-    //     return RedirectToAction("Index");
-    //   }
-    //   else
-    //   {
-    //     return RedirectToAction("Search");
-    //   }
-    // }
-
   }
 }
