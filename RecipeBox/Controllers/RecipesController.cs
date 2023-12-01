@@ -144,10 +144,11 @@ namespace RecipeBox.Controllers
       }
     }
 
-    // public ActionResult Search()
-    // {
-    //   return View();
-    // }
+    [Authorize]
+    public ActionResult Search()
+    {
+      return View();
+    }
 
     // [HttpPost]
     // public ActionResult Search(Recipe searchedIngredient)
