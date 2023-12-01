@@ -22,9 +22,9 @@ namespace RecipeBox
                         )
                       );
 
-      // builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-      //           .AddEntityFrameworkStores<RecipeBoxContext>()
-      //           .AddDefaultTokenProviders();
+      builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+            .AddEntityFrameworkStores<RecipeBoxContext>()
+            .AddDefaultTokenProviders();
 
       // builder.Services.Configure<IdentityOptions>(options =>
       // {
@@ -41,8 +41,8 @@ namespace RecipeBox
       app.UseHttpsRedirection();
       app.UseStaticFiles();
       app.UseRouting();
-      // app.UseAuthentication();
-      // app.UseAuthorization();
+      app.UseAuthentication();
+      app.UseAuthorization();
 
       app.MapControllerRoute(
         name: "default",
