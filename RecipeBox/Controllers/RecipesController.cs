@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RecipeBox.Controllers
 {
@@ -21,6 +22,7 @@ namespace RecipeBox.Controllers
       return View(model);
     }
 
+    [Authorize]
     public ActionResult Create()
     {
       return View();
@@ -50,6 +52,7 @@ namespace RecipeBox.Controllers
       return View(thisRecipe);
     }
 
+    [Authorize]
     public ActionResult AddTag(int id)
     {
       Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipes => recipes.RecipeId == id);
@@ -71,6 +74,7 @@ namespace RecipeBox.Controllers
       return RedirectToAction("Details", new { id = recipe.RecipeId });
     }
 
+    [Authorize]
     public ActionResult Edit(int id)
     {
       Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipes => recipes.RecipeId == id);
@@ -92,6 +96,7 @@ namespace RecipeBox.Controllers
       }
     }
 
+    [Authorize]
     public ActionResult Delete(int id)
     {
       Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.RecipeId == id);
@@ -107,6 +112,7 @@ namespace RecipeBox.Controllers
       return RedirectToAction("Index");
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult DeleteJoin(int joinId)
     {
@@ -116,6 +122,7 @@ namespace RecipeBox.Controllers
       return RedirectToAction("Index");
     }
 
+    [Authorize]
     public ActionResult RateRecipe(int id)
     {
       Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.RecipeId == id);
