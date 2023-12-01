@@ -5,6 +5,8 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.ObjectPool;
+using System;
 
 namespace RecipeBox.Controllers
 {
@@ -150,19 +152,20 @@ namespace RecipeBox.Controllers
       return View();
     }
 
-    // [HttpPost]
-    // public ActionResult Search(Recipe searchedIngredient)
-    // {
-    //   Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.Ingredients == searchedIngredient.Ingredients);
-    //   if (thisRecipe == searchedIngredient)
-    //   {
-    //     return RedirectToAction("Index");
-    //   }
-    //   else
-    //   {
-    //     return RedirectToAction("Search");
-    //   }
-    // }
+    [HttpPost]
+    public ActionResult Search(string searchedIngredient)
+    {
+      var search = searchedIngredient.Split();
+      Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.Ingredients == searchedIngredient);
+      if (search = thisRecipe.Ingredients)
+      {
+        return RedirectToAction("Index");
+      }
+      else
+      {
+        return RedirectToAction("Search");
+      }
+    }
 
   }
 }
