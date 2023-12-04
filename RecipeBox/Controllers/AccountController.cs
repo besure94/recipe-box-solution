@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using RecipeBox.Models;
 using System.Threading.Tasks;
 using RecipeBox.ViewModels;
-using System.Runtime.CompilerServices;
 
 namespace RecipeBox.Controllers
 {

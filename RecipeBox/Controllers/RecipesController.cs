@@ -5,8 +5,8 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.ObjectPool;
-using System;
+using RecipeBox.ViewModels;
+
 
 namespace RecipeBox.Controllers
 {
@@ -153,18 +153,22 @@ namespace RecipeBox.Controllers
     }
 
     [HttpPost]
-    public ActionResult Search(string searchedIngredient)
+    public ActionResult Search(SearchViewModel model)
     {
-      var search = searchedIngredient.Split();
-      Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.Ingredients == searchedIngredient);
-      if (search = thisRecipe.Ingredients)
+      if (ModelState.IsValid)
       {
-        return RedirectToAction("Index");
+        return RedirectToAction("SearchResults", new { searchedIngredient = model.SearchedIngredient });
       }
       else
       {
-        return RedirectToAction("Search");
+        return View();
       }
+    }
+
+    public ActionResult SearchResults(string searchedIngredient)
+    {
+      List<Recipe> searchResults = _db.Recipes.Where(r => r.Ingredients.ToLower().Contains(searchedIngredient.ToLower())).ToList();
+      return View(searchResults);
     }
 
   }

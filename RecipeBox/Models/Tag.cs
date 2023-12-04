@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System;
 
 namespace RecipeBox.Models
 {
@@ -11,5 +10,6 @@ namespace RecipeBox.Models
     [Required(ErrorMessage = "The tag must have a category.")]
     public string Category { get; set; }
     public List<RecipeTag> JoinEntities { get; }
+
   }
 }

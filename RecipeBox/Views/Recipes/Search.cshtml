@@ -2,15 +2,18 @@
   Layout = "_Layout";
 }
 
-@model RecipeBox.Models.Recipe
+@using RecipeBox.ViewModels
+@model SearchViewModel
 
 <h4>Search for a recipe by an ingredient</h4>
 <p>For example: eggs, bacon, ground beef, etc.</p>
+<p>@Html.ValidationMessageFor(model => model.SearchedIngredient, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Ingredients)
-  @Html.TextBoxFor(model => model.Ingredients)
+  @Html.TextBoxFor(model => model.SearchedIngredient)
   <input type="submit" class="btn btn-primary" value="Search"/>
 }
 <br>
 <p>@Html.ActionLink("Back to recipe list", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
