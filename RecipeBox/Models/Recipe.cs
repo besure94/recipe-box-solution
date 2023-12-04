@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -18,5 +17,6 @@ namespace RecipeBox.Models
     public string Instructions { get; set; }
     public int Rating { get; set; }
     public List<RecipeTag> JoinEntities { get; }
+
   }
 }

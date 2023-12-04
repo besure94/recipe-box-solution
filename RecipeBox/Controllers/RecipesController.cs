@@ -5,6 +5,8 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using RecipeBox.ViewModels;
+
 
 namespace RecipeBox.Controllers
 {
@@ -142,6 +144,31 @@ namespace RecipeBox.Controllers
         _db.SaveChanges();
         return RedirectToAction("Index");
       }
+    }
+
+    [Authorize]
+    public ActionResult Search()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Search(SearchViewModel model)
+    {
+      if (ModelState.IsValid)
+      {
+        return RedirectToAction("SearchResults", new { searchedIngredient = model.SearchedIngredient });
+      }
+      else
+      {
+        return View();
+      }
+    }
+
+    public ActionResult SearchResults(string searchedIngredient)
+    {
+      List<Recipe> searchResults = _db.Recipes.Where(r => r.Ingredients.ToLower().Contains(searchedIngredient.ToLower())).ToList();
+      return View(searchResults);
     }
 
   }

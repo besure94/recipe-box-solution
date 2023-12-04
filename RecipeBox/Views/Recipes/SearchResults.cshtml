@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@using RecipeBox.Models;
+@model List<Recipe>;
+
+<h1>Recipe Search Results</h1>
+
+@if (true)
+{
+  <ul>
+    @foreach (Recipe recipe in Model)
+    {
+      <li>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId }) | Ingredients: @recipe.Ingredients</li>
+    }
+  </ul>
+}
+else
+{
+  <p>No recipes containing this ingredient were found.</p>
+}
+<p>@Html.ActionLink("Back to search page", "Search")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+
